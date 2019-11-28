@@ -1,0 +1,291 @@
+<!Doctype html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div>
+        <button id='ref' onclick= 'ref()'>Shuffle</button>
+        <button id='start' onclick= 'bubble(1);'>Bubble Sort</button>
+        <button id='start' onclick= 'bubble(2)'>Bubble Sort in Revarse</button>
+        <button id='select' onclick= 'select(1)'>Selection Sort</button>
+        <button id='select' onclick= 'select(2)'>Selection Sort in Revarse</button>
+        <button id='merge' onclick= 'mergeOption(1)'>Merge Sort</button>
+        <!-- <button  onclick= 'play()' >play</button>
+        <button  onclick= 'stope()' >stop</button> -->
+        <canvas id="myCanvas" width = '1350' height='520' style='border: 2px solid silver'/>
+        </div>
+        <div class='row'>
+            <div class='col' id = 'display'><label id='lblPass'>0 </label><label> Passes </label><label> | </label><label id='lblDisplay'>0 </label><label> Swapps</label></div>
+        </div>
+        <script>
+            var audio=null;
+            var arr = [];  //create empty array
+            var value =10;
+            
+            for(var i = 0; i<= 94; i++){ //initialize the array
+                arr.push(value);
+                value+=5;
+            }
+            var ttl=arr.length;
+            function draw(array, color) {
+
+                if (canvas.getContext) {
+                    var ctx = canvas.getContext('2d');
+                    var width = 12;
+                    var currX = 8;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);  
+                    for(var i = 0; i < array.length; i++){
+                        if(i == color){
+                            ctx.fillStyle = 'black';
+                        }else{
+                            ctx.fillStyle = 'red';
+                        }
+                        var h = array[i];
+                        ctx.font = 'bold 10px serif';
+                        ctx.fillText(array[i], currX, canvas.height - (h + 14) ); //(text, x,y, maxWidth) where (x,y) start point of text
+                        ctx.fillRect(currX, canvas.height - (h+8), width, h); //(x,y,width, height) where (x,y) upper left corner of rectangle
+                        ctx.fillText(i+1, currX, canvas.height - (2) );
+                        currX += width + 2;
+                    }
+                }
+            }
+ 
+            function* bubbleSort(array, b) { // * is magic
+                document.getElementById("lblPass").innerHTML = 0; // Reset the pass label
+                document.getElementById("lblDisplay").innerHTML = 0;//Reset the swap label
+                var swapped;
+                var step = 0;
+                var pass = 1;
+                if(b==2){
+                    do{
+                        swapped = false;
+                        document.getElementById("lblPass").innerHTML = pass;// display the number passes made
+                        for (var i = array.length; i >=0; i--) {//bobble sort in revarse
+                            if (array[i] < array[i + 1]) {
+                                var temp = array[i];
+                                array[i] = array[i + 1];
+                                array[i + 1] = temp;
+                                swapped = true;
+                                step++;
+                                draw(array, i);
+                                document.getElementById("lblDisplay").innerHTML = step;
+                                yield swapped; // pause here
+                            }
+                        }
+                        pass++
+                    } while (swapped);
+                    stopMusic();
+                }else{
+                    do{
+                        swapped = false;
+                        document.getElementById("lblPass").innerHTML = pass;// display the number passes made
+                        for (var i = 0; i < array.length - 1; i++) {
+                            if (array[i] > array[i + 1]) {
+                                var temp = array[i];
+                                array[i] = array[i + 1];
+                                array[i + 1] = temp;
+                                swapped = true;
+                                step++;
+                                draw(array, i);
+                                document.getElementById("lblDisplay").innerHTML = step;
+                                yield swapped; // pause here
+                            }
+                        }
+                        pass++
+                    } while (swapped);
+                    stopMusic();
+                }
+            }
+ 
+            function* selectSortRev(array){//==========================================Selection Sort function to Sort in revarse
+                document.getElementById("lblPass").innerHTML = 0; // Reset the pass label
+                document.getElementById("lblDisplay").innerHTML = 0;//Reset the swap label
+                playMusic();
+                var len = array.length;
+                var min;
+                var i = len;
+                var pass = 0;
+                var step =0;
+                    do{
+                        //set minimum to this position
+                        min = i;
+                        document.getElementById("lblPass").innerHTML = pass;
+                        //check the rest of the array to see if anything is smaller
+                        for (j=i-1; j >=0; j--){
+                            if (array[j] < array[min]){
+                                min = j;
+                            }
+                        }
+                         //if the minimum isn't in the position, swap it
+                            if (i != min){
+                                var temp = array[i];
+                                array[i] = array[min];
+                                array[min] = temp;
+                                step++;
+                                document.getElementById("lblDisplay").innerHTML = step;
+                            }
+                         draw(array, i);
+                        i--; pass++;
+                        yield i; // pause here
+                    }while(i >= 0);
+                    stopMusic();
+            }
+ 
+            function* selectSort(array){//Selection Sort function
+                playMusic();
+                document.getElementById("lblPass").innerHTML = 0; // Reset the pass label
+                document.getElementById("lblDisplay").innerHTML = 0;//Reset the swap label
+                var len = array.length;
+                var min;
+                var i = 0;
+                var step =0;
+                    do{
+                        //set minimum to this position
+                        min = i;
+                        document.getElementById("lblPass").innerHTML = i+1;
+                        //check the rest of the array to see if anything is smaller
+                        for (j=i+1; j < len; j++){
+                            if (array[j] < array[min]){
+                                min = j;
+                            }
+                        }
+                         //if the minimum isn't in the position, swap it
+                            if (i != min){
+                                var temp = array[i];
+                                array[i] = array[min];
+                                array[min] = temp;
+                                step++;
+                                document.getElementById("lblDisplay").innerHTML = step;
+                            }
+                         draw(array, i);
+                        i++;
+                        yield i; // pause here
+                        
+                        
+                    }while(i < len);
+                   
+                    stopMusic();
+            }
+           // background: linear-gradient(0.10turn, #ebf8e1, #f69d3c, #ebf8e1);'
+ 
+            function bubble(option){//Bubble sort call
+                playMusic();
+                canvas = document.getElementById('myCanvas');
+                
+                var sort = bubbleSort(arr, option);
+                // an anim function triggered every 60th of a second
+                function anim(ar){
+                    requestAnimationFrame(anim);
+                    //draw(ar);
+                    sort.next(); // call next iteration of the bubbleSort function
+                }
+                
+                setTimeout(anim(arr), 20000);
+                
+            }
+ 
+            function select(option){//Selection sort call
+             
+                if(option == 2){
+                    
+                    canvas = document.getElementById('myCanvas');
+                    var sort = selectSortRev(arr);//sort in revarse if option is 1
+                    // an anim function triggered every 60th of a second
+                    function anim(ar){
+                        requestAnimationFrame(anim);
+                        //draw(ar);
+                        sort.next(); // call next iteration of the bubbleSort function
+                    }
+                    
+                    setTimeout(anim(arr), 20000);
+                }else{
+                
+                    canvas = document.getElementById('myCanvas');
+                    var sort = selectSort(arr);
+                    // an anim function triggered every 60th of a second
+                    function anim(ar){
+                        requestAnimationFrame(anim);
+                        //draw(ar);
+                        sort.next(); // call next iteration of the bubbleSort function
+                    }
+                    
+                    setTimeout(anim(arr), 20000);
+                }
+            }
+           
+            function ref(){ //Reshuffle the array with this function call
+                shuffle(arr);
+                draw(arr, 0);
+            }
+ 
+            function shuffle(array) {//shuffles the array
+                  var currentIndex = array.length, temporaryValue, randomIndex;
+ 
+                  // While there remain elements to shuffle...
+                  while (0 !== currentIndex) {
+ 
+                    // Pick a remaining element...
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+ 
+                    // And swap it with the current element.
+                    temporaryValue = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = temporaryValue;
+                 }
+                 return array;
+            }
+
+            
+            window.onload = function(){
+                canvas = document.getElementById('myCanvas');
+                shuffle(arr);
+                draw(arr, 0);
+            }
+
+
+
+
+
+
+
+
+
+            
+          function playMusic()
+          {
+              audio=new Audio("NCS.mp3")
+              audio.play();
+          };
+          function stopMusic()
+          {
+              
+            audio.pause();
+            audio.currentTime = 0;
+          };
+        </script>
+        <style type="text/css">
+            button{
+                background: #5bf63c;
+                color: white;
+                font-size: 14px;
+                font-style: bold;
+                border-radius: 5px;
+                padding: 5px;
+            }
+            #display{
+                width: 30%;
+                margin: auto;
+                background: hsl(167, 90%, 60%);
+                font-size: 28px;
+                font-style: bold;
+                border-radius: 8px;
+                padding: 2px;
+                text-align: center;
+                border: 4px solid gray
+            }
+        </style>
+       
+    </body>
+
+    </html>
