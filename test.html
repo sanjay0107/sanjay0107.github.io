@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/test.css">
+    <script type="text/javascript" src="../js/add.js"></script>
+</head>
+
+<body>
+    <div class="header row">
+        <h1>TCS Assignment</h1>
+    </div>
+
+    <div class="row" align="center">
+        <!-- left half -->
+        <div class="col-5 insert">
+            <form onclick="addCard()">
+                <h2>Add Web Series In Card</h2>
+                <table align="center">
+                    <tr>
+                        <td><label for="title">Title</label></td>
+                        <td><input type="text" name="title" id="title"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="director">Director</label> </td>
+                        <td><input type="text" name="director" id="director"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Stars">Stars</label></td>
+                        <td><input type="text" name="title" id="title"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="plateform">Streaming Plateform</label> </td>
+                        <td>
+                            <select name="plateform" id="plateform">
+                                <option value="volvo">Netflix</option>
+                                <option value="saab">Youtube</option>
+                                <option value="opel">Amazone Prime</option>
+                                <option value="audi">Hotstart</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr style="column-span: 2;">
+
+                        <td><input type="button" value="ADD"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <!-- middile space -->
+        <div class="col-1"></div>
+        <!-- right half -->
+        <div class="col-6 cards">
+            <div class="row card-roW1">
+                <div class=" col-5 card-left">
+                    <h2>Webseries Detail 1</h2>
+                </div>
+                <!-- betWeen card space -->
+                <div class="col-2"></div>
+
+                <div class="col-5 card-right">
+                    <h2>Webseries Detail 2</h2>
+                </div>
+            </div>
+
+
+            <div class="row card-roW2">
+                <div class=" col-5 card-left">
+                    <h2>Webseries Detail</h2>
+                </div>
+                <!-- betWeen card space -->
+                <div class="col-2"></div>
+                <div class="col-5 card-right">
+                    <h2>Webseries Detail</h2>
+                </div>
+            </div>
+
+            <div class="row card-roW3">
+                <div class=" col-5 card-left">
+                    <h2>Webseries Detail</h2>
+                </div>
+                <!-- betWeen card space -->
+                <div class="col-2"></div>
+                <div class="col-5 card-right last-card">
+                    <h2>Webseries Detail</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <h4>&copy; TCS &nbsp; ING Assignment </h4>
+    </div>
+</body>
+
+</html>
