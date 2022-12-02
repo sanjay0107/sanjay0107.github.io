@@ -222,6 +222,7 @@
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
+            
           </div>
         </div>
       </div>
@@ -289,36 +290,9 @@
   </footer>
 
   <!-- Some Javascript -->
-  <script src="js/jquery-2.1.1.js"></script>
-  <script src="js/swiper.jquery.min.js"></script>
-  <!-- Initialize Client Swiper -->
+  <script src="./js/jquery-3.6.1.js"></script>
+  <script src="./js/swiper.jquery.min.js"></script>
   <script>
-    var swiper1 = new Swiper('.client-swiper', {
-      slidesPerView: 3,
-      paginationClickable: true,
-      nextButton: '.swiper-button-next',
-      prevButton: '.swiper-button-prev',
-      spaceBetween: 60,
-      // Responsive breakpoints
-      breakpoints: {
-        // when window width is <= 320px
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-          pagination: '.swiper-pagination'
-        },
-        // when window width is <= 480px
-        480: {
-          slidesPerView: 1,
-          spaceBetween: 20
-        },
-        // when window width is <= 640px
-        640: {
-          slidesPerView: 1,
-          spaceBetween: 30
-        }
-      }
-    });
     // Initialize Testimonial Swiper
     var swiper2 = new Swiper('.testimonial-swiper', {
       slidesPerView: 3,
@@ -327,6 +301,11 @@
       spaceBetween: 30,
       grabCursor: true,
       freeMode: true,
+      autoplay: {
+          delay: 3500,
+          disableOnInteraction: false,
+        },
+      
       breakpoints: {
         // when window width is <= 320px
         320: {
@@ -346,8 +325,8 @@
       }
     });
   </script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-  <script src="js/jquery.counterup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
   <script>
     // Counterup
     $('.counter').counterUp({
@@ -356,7 +335,8 @@
 
     // Main Navigation
     $('#menu-toggle').click(function () {
-      $(this).toggleClass('open');
+      console.log(this);
+      $(this).toggleClass('open')
       $('.main-nav').toggleClass('show-it');
     })
   </script>
