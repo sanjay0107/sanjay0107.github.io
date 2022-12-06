@@ -359,6 +359,7 @@ nav {
 }
 #menu-toggle {
   width: 40px;
+  margin-right: 10px;
   clear: both;
   float: right;
 }

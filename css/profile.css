@@ -202,15 +202,15 @@
 
 .card.hovercard .avatar {
     position: relative;
-    top: -50px;
+    top: -100px;
     margin-bottom: -50px;
 }
 
 .card.hovercard .avatar img {
-    width: 100px;
-    height: 100px;
-    max-width: 100px;
-    max-height: 100px;
+    width: 200px;
+    height: 200px;
+    max-width: 300px;
+    max-height: 300px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -218,6 +218,7 @@
 }
 
 .card.hovercard .info {
+    margin-top: -90px;
     padding: 4px 8px 10px;
 }
 

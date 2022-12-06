@@ -90,14 +90,13 @@
 
             </div>
             <div class="avatar">
-              <img alt="" src="assets/myimage.jpg">
+              <img alt="" src="assets/drawing_sanjay_2.png">
             </div>
             <div class="info">
               <div class="title">
                 <a target="_blank" href="https://www.linkedin.com/in/sanjaygautam535/">Sanjay Gautam</a>
               </div><br>
-              <div class="desc text-info text-center">Competitive Programmer <span class="text-danger">|</span> Web
-                Developer</div>
+              <div class="desc text-info text-center">Problem solver <span class="text-danger">|</span>Fullstack developer</div>
               <br>
               <br>
               <!-- <div class="desc">Curious developer</div>
@@ -109,8 +108,8 @@
                 <li><a target="_blank" href="https://github.com/sanjay535"><img src="assets/github.png"></a></li>
                 <li><a target="_blank" href="https://www.hackerrank.com/sanjaykumargaut1"><img src="assets/hackerrank.png"></a></li>
                 <li><a target="_blank" href="https://www.linkedin.com/in/sanjaygautam535/"><img src="assets/linkedin.png"></a></li>
-                <li><a target="_blank" href="https://codeforces.com/profile/gautam535"><img
-                      src="assets/codeforces-logo-with-telegram.png"></a></li>
+                <!-- <li><a target="_blank" href="https://codeforces.com/profile/gautam535"><img
+                      src="assets/codeforces-logo-with-telegram.png"></a></li> -->
 
               </ul>
             </div>
@@ -275,8 +274,8 @@
             <li><a href="https://github.com/sanjay535"><img src="assets/github.png"></a></li>
             <li><a href="https://www.hackerrank.com/sanjaykumargaut1"><img src="assets/hackerrank.png"></a></li>
             <li><a href="https://www.linkedin.com/in/sanjaygautam535/"><img src="assets/linkedin.png"></a></li>
-            <li><a href="https://codeforces.com/profile/gautam535"><img
-                  src="assets/codeforces-logo-with-telegram.png"></a></li>
+            <!-- <li><a href="https://codeforces.com/profile/gautam535"><img
+                  src="assets/codeforces-logo-with-telegram.png"></a></li> -->
             <!-- <li><a href=https://codeforces.com/profile/gautam535><img src="assets/medium-1.png"></a></li> -->
           </ul>
         </div>
@@ -321,13 +320,32 @@
       }
     });
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
-  <script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script> -->
+  <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js"></script>
+   <script>
     // Counterup
-    $('.counter').counterUp({
-      time: 1000
-    });
+    // $('.counter').counterUp({
+    //   time: 1000
+    // });
+    const counterUp = window.counterUp.default
+
+const callback = entries => {
+	entries.forEach( entry => {
+		const el = entry.target
+		if ( entry.isIntersecting && ! el.classList.contains( 'is-visible' ) ) {
+			counterUp( el, {
+				duration: 1000,
+			} )
+			el.classList.add( 'is-visible' )
+		}
+	} )
+}
+
+const IO = new IntersectionObserver( callback, { threshold: 1 } )
+console.log('IO=',IO)
+const el = document.querySelectorAll('.counter');
+el.forEach(item=>IO.observe(item));
+
 
     // Main Navigation
     $('#menu-toggle').click(function () {
