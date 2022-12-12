@@ -198,6 +198,18 @@
     background: url(../assets/hero-bg~.jpg) no-repeat center center fixed;
     background-size: cover;
     height: 135px;
+    animation: image-background 1s infinite; 
+}
+@keyframes image-background {
+    0%{
+        background: url(../assets/hero-bg~.jpg) no-repeat center center fixed;
+    }
+    50%{
+        background: url(../assets/hero-bg-2.jpg) no-repeat center center fixed;
+    }
+    100%{
+        background: url(../assets/hero-bg~.jpg) no-repeat center center fixed;
+    }
 }
 
 .card.hovercard .avatar {
