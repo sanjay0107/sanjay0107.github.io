@@ -1,5 +1,5 @@
 
-
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500|Jost:400,500,600&display=swap");
 .card {
     padding-top: 20px;
     margin: 10px 0 20px 0;
@@ -15,18 +15,12 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    font-family: "Jost", sans-serif;
 }
 
 .card .card-heading {
     padding: 0 20px;
     margin: 0;
-}
-
-.card .card-heading.simple {
-    font-size: 20px;
-    font-weight: 300;
-    color: #777;
-    border-bottom: 1px solid #e5e5e5;
 }
 
 .card .card-heading.image img {
@@ -46,65 +40,6 @@
     vertical-align: top;
 }
 
-.card .card-heading.image .card-heading-header h3 {
-    margin: 0;
-    font-size: 14px;
-    line-height: 16px;
-    color: #262626;
-}
-
-.card .card-heading.image .card-heading-header span {
-    font-size: 12px;
-    color: #999999;
-}
-
-.card .card-body {
-    padding: 0 20px;
-    margin-top: 20px;
-}
-
-.card .card-media {
-    padding: 0 20px;
-    margin: 0 -14px;
-}
-
-.card .card-media img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.card .card-actions {
-    min-height: 30px;
-    padding: 0 20px 20px 20px;
-    margin: 20px 0 0 0;
-}
-
-.card .card-comments {
-    padding: 20px;
-    margin: 0;
-    background-color: #f8f8f8;
-}
-
-.card .card-comments .comments-collapse-toggle {
-    padding: 0;
-    margin: 0 20px 12px 20px;
-}
-
-.card .card-comments .comments-collapse-toggle a,
-.card .card-comments .comments-collapse-toggle span {
-    padding-right: 5px;
-    overflow: hidden;
-    font-size: 12px;
-    color: #999;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.card-comments .media-heading {
-    font-size: 13px;
-    font-weight: bold;
-}
-
 .card.people {
     position: relative;
     display: inline-block;
@@ -114,28 +49,6 @@
     margin-left: 20px;
     overflow: hidden;
     vertical-align: top;
-}
-
-.card.people:first-child {
-    margin-left: 0;
-}
-
-.card.people .card-top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    width: 170px;
-    height: 150px;
-    background-color: #ffffff;
-}
-
-.card.people .card-top.green {
-    background-color: #53a93f;
-}
-
-.card.people .card-top.blue {
-    background-color: #427fed;
 }
 
 .card.people .card-info {
@@ -155,11 +68,12 @@
     display: block;
     margin: 8px 14px 0 14px;
     overflow: hidden;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     line-height: 18px;
     color: #404040;
 }
+
 
 .card.people .card-info .desc {
     display: block;
@@ -170,20 +84,6 @@
     color: #737373;
     text-overflow: ellipsis;
     padding:10px;
-}
-
-.card.people .card-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: inline-block;
-    width: 100%;
-    padding: 10px 20px;
-    line-height: 29px;
-    text-align: center;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 .card.hovercard {
@@ -236,23 +136,29 @@
 
 .card.hovercard .info .title {
     margin-bottom: 4px;
-    font-size: 30px;
+    font-size: 2.2em;
     line-height: 1;
-    color: #c41515;
+    color: #fff;
     vertical-align: middle;
 }
 
 .card.hovercard .info .desc {
     overflow: hidden;
-    font-size: 20px;
-    line-height: 20px;
-    color: #ffffff;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #f2f2f2;
     text-overflow: ellipsis;
+    margin: 5px 0px;
 }
 
 .card.hovercard .bottom {
     padding: 0 20px;
     margin-bottom: 17px;
+}
+.card-social-links{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 
