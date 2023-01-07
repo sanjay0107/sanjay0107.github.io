@@ -220,7 +220,7 @@ h1.heading.pink:after {
 
 /* Testimonial */
 .testimonial-box {
-  padding: 2em;
+  /* padding: 2em; */
   color: #fff;
   border-radius: 5px;
   font-weight: 300;
@@ -452,7 +452,14 @@ ul.main-nav.show-it {
 }
 
 
-
+.navigation-links{
+  display: flex;
+  justify-content: center;
+}
+.swiper-pagination span{
+  width: 20px;
+  height: 20px;
+}
 
 
 
